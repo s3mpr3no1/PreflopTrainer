@@ -1,0 +1,35 @@
+UTG Open:Raise AA-77,AKs-A2s,KQs-K9s,QJs-Q9s,JTs-J9s,T9s,AKo-ATo,KQo-KJo:Call
+MP Open:Raise AA-55,AKs-A2s,KQs-K9s,QJs-Q9s,JTs-J9s,T9s,98s,87s,76s,65s,54s,AKo-ATo,KQo-KJo:Call
+CO Open:Raise AA-22,AKs-A2s,KQs-K6s,QJs-Q8s,JTs-J9s,T9s,98s,87s,76s,65s,54s,AKo-A9o,KQo-KJo,QJo:Call
+BTN Open:Raise AA-22,AKs-A2s,KQs-K2s,QJs-Q4s,JTs-J6s,T9s-T7s,98s-97s,87s,76s,65s,54s,AKo-A4o,KQo-K8o,QJo-Q9o,JTo-J9o,T9o:Call
+SB Open:Raise AA-22,AKs-A2s,KQs-K2s,QJs-Q4s,JTs-J6s,T9s-T7s,98s-97s,87s,76s,65s,54s,AKo-A4o,KQo-K8o,QJo-Q9o,JTo-J9o,T9o:Call
+BB Vs UTG Raise:Raise AA-QQ,AKs,A5s-A2s,AKo:Call JJ-22,AQs-A6s,KQs-K2s,QJs-Q6s,JTs-J8s,T9s-T7s,98s-96s,87s-86s,76s-75s,65s-64s,54s-53s,43s,AQo-ATo,KQo-KJo,QJo
+BB Vs MP Raise:Raise AA-QQ,AKs,A5s-A2s,AKo:Call JJ-22,AQs-A6s,KQs-K2s,QJs-Q6s,JTs-J8s,T9s-T7s,98s-96s,87s-86s,76s-75s,65s-64s,54s-53s,43s,AQo-ATo,KQo-KJo,QJo
+BB Vs CO Raise:Raise AA-JJ,AKs-AQs,A5s-A2s,AKo:Call TT-22,AJs-A6s,KQs-K2s,QJs-Q4s,JTs-J7s,T9s-T7s,98s-96s,87s-86s,76s-75s,65s-64s,54s-53s,43s,AQo-A9o,KQo-KTo,QJo-QTo,JTo
+BB Vs BTN Raise:Raise AA-TT,AKs-AQs,A5s-A2s,JTs-J9s,T9s,AKo:Call 99-22,AJs-A6s,KQs-K2s,QJs-Q2s,J8s-J4s,T8s-T6s,98s-96s,87s-85s,76s-74s,65s-64s,54s-53s,43s,AQo-A7o,KQo-K9o,QJo-QTo,JTo-J9o,T9o
+BB Vs SB Raise:Raise AA-TT,AKs-AQs,A5s-A2s,AKo-AQo:Call 99-22,AJs-A6s,KQs-K2s,QJs-Q2s,JTs-J2s,T9s-T2s,98s-95s,87s-85s,76s-74s,65s-63s,54s-52s,43s-42s,32s,AJo-A2o,KQo-K6o,QJo-Q8o,JTo-J8o,T9o
+SB Vs UTG Raise:Raise AA-99,AKs-ATs,A5s,KQs-KTs,QJs,AKo:Call
+SB Vs MP Raise:Raise AA-99,AKs-ATs,A5s-A4s,KQs-KTs,QJs-QTs,JTs,AKo-AQo:Call
+SB Vs CO Raise:Raise AA-99,AKs-ATs,A5s-A4s,KQs-KTs,QJs-QTs,JTs,AKo-AQo,KQo:Call
+SB Vs BTN Raise:Raise AA-99,AKs-A8s,A5s-A4s,KQs-K9s,QJs-QTs,JTs-J9s,T9s,AKo-AJo,KQo:Call
+BTN Vs UTG Raise:Raise AA-QQ,AKs,A5s-A4s,QJs-QTs,AKo:Call JJ-66,AQs-A8s,KQs-KTs,JTs,T9s,AQo,KQo
+BTN Vs MP Raise:Raise AA-QQ,AKs,A5s-A4s,QJs-QTs,AKo:Call JJ-66,AQs-A8s,KQs-KTs,Q9s,JTs-J9s,T9s,AQo,KQo
+BTN Vs CO Raise:Raise AA-QQ,AKs-AQs,A5s-A2s,QJs-QTs,AKo:Call JJ-55,AJs-A6s,KQs-KTs,Q9s,JTs-J9s,T9s,AQo-AJo,KQo
+CO Vs UTG Raise:Raise AA-99,AKs-A9s,A5s-A4s,KQs-KTs,QJs,AKo-AQo:Call
+CO Vs MP Raise:Raise AA-88,AKs-ATs,A5s-A4s,KQs-KTs,QJs-QTs,JTs,AKo-AQo,KQo:Call
+MP Vs UTG Raise:Raise AA-TT,AKs-AJs,A5s-A4s,KQs-KJs,QJs,AKo-AQo:Call
+SB Vs BB 3Bet:Raise AA-TT,AKs-AQs,A5s-A2s,AKo,AJo-ATo:Call 99-22,AJs-A6s,KQs-K8s,QJs-Q9s,JTs-J9s,T9s-T8s,98s,87s,76s,65s,54s,AQo,KQo-KJo
+BTN Vs BB 3Bet:Raise AA-QQ,AKs,A5s,AKo:Call JJ-66,AQs-A7s,KQs-K9s,QJs-QTs,JTs-J9s,T9s-T8s,98s,87s,AQo-AJo,KQo
+BTN Vs SB 3Bet:Raise AA-QQ,AKs,A5s:Call JJ-22,AQs-A8s,KQs-K9s,QJs-QTs,JTs,T9s,98s,87s,76s,65s,54s,AKo-AJo,KQo
+CO Vs BB 3Bet:Raise AA-KK,AKs,A5s:Call QQ-99,AQs-A9s,KQs-KTs,QJs-QTs,JTs,AKo-AQo
+CO Vs SB 3Bet:Raise AA-KK,AKs,A5s:Call QQ-88,AQs-ATs,KQs-KTs,QJs,JTs,87s,76s,AKo-AQo
+CO Vs BTN 3Bet:Raise AA-JJ,AKs,A5s,AKo:Call TT-88,AQs-ATs,KQs-KTs,QJs,87s,76s,65s,54s,AQo
+MP Vs BB 3Bet:Raise AA-KK,AKs,A5s:Call QQ-TT,AQs-ATs,KQs-KTs,AKo
+MP Vs SB 3Bet:Raise AA-KK,AKs,A5s:Call QQ-99,AQs-AJs,KQs-KTs,AKo-AQo
+MP Vs BTN 3Bet:Raise AA-QQ,AKs,A5s,KJs-KTs,AKo:Call JJ-TT,AQs-AJs,KQs,AQo
+MP Vs CO 3Bet:Raise AA-QQ,AKs,A5s,KJs,AKo:Call JJ-TT,AQs-AJs,KQs,AQo
+UTG Vs BB 3Bet:Raise AA,A5s:Call KK-TT,AKs-ATs,KQs-KJs,AKo
+UTG Vs SB 3Bet:Raise AA-KK,AKs:Call QQ-TT,AQs-AJs,KQs-KJs,AKo
+UTG Vs BTN 3Bet:Raise AA-KK,AKs:Call QQ-TT,AQs-AJs,KQs-KJs,AKo
+UTG Vs CO 3Bet:Raise AA-KK,AKs,A5s:Call QQ-TT,AQs-AJs,KQs,AKo
+UTG Vs MP 3Bet:Raise AA-KK,AKs:Call QQ-TT,AQs-AJs,KQs,AKo
