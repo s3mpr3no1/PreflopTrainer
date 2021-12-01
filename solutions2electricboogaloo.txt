@@ -1,0 +1,35 @@
+UTG Open:Raise AA-22,AKs-A2s,KQs-K7s,QJs-Q8s,JTs-J8s,T9s-T8s,98s,87s,76s,AKo-A9o,KQo-KTo,QJo
+MP Open:Raise AA-22,AKs-A2s,KQs-K4s,QJs-Q7s,JTs-J7s,T9s-T7s,98s-97s,87s-86s,76s-75s,65s,54s,AKo-A9o,KQo-KTo,QJo-QTo,JTo
+CO Open:Raise AA-22,AKs-A2s,KQs-K2s,QJs-Q6s,JTs-J6s,T9s-T6s,98s-96s,87s-86s,76s-75s,65s,54s,AKo-A5o,KQo-K9o,QJo-Q9o,JTo-J9o,T9o
+BTN Open:Raise AA-22,AKs-A2s,KQs-K2s,QJs-Q2s,JTs-J2s,T9s-T5s,98s-95s,87s-85s,76s-74s,65s-64s,54s-53s,43s,32s,AKo-A2o,KQo-K5o,QJo-Q8o,JTo-J8o,T9o-T8o,98o
+SB Open:Raise AA-22,AKs-A2s,KQs-K2s,QJs-Q2s,JTs-J2s,T9s-T2s,98s-92s,87s-82s,76s-72s,65s-62s,54s-52s,43s-42s,32s,AKo-A2o,KQo-K5o,QJo-Q8o,JTo-J8o,T9o-T8o,98o:Limp K4o-K2o,Q7o-Q2o,J7o-J2o,T7o-T5o,97o-95o,87o-85o,76o-75o,65o-64o,54o-53o,43o-42o,32o
+BB Vs UTG Raise:3-Bet AA-JJ,AKs,AKo:3-Bet-Fold A8s,A5s-A4s,KQs-KJs,QTs,T9s,87s,76s:Call TT-22,AQs-A9s,A7s-A6s,A3s-A2s,KTs-K2s,QJs,Q9s-Q2s,JTs-J6s,T8s-T6s,98s-96s,86s,75s,65s-62s,54s-52s,43s-42s,32s,AQo-A8o,KQo-KTo,QJo-QTo,JTo,T9o,98o,87o,76o,65o
+BB Vs MP Raise:3-Bet AA-JJ,AKs,AKo:3-Bet-Fold A8s,A5s-A4s,KQs-KJs,QTs,T9s,87s,76s:Call TT-22,AQs-A9s,A7s-A6s,A3s-A2s,KTs-K2s,QJs,Q9s-Q2s,JTs-J6s,T8s-T6s,98s-96s,86s,75s,65s-62s,54s-52s,43s-42s,32s,AQo-A8o,KQo-KTo,QJo-QTo,JTo,T9o,98o,87o,76o,65o
+BB Vs CO Raise:3-Bet AA-TT,AKs-ATs,KQs-KJs,QJs,JTs,T9s,98s,87s,AKo-AJo,KQo:3-Bet-Fold A5s,K5s,Q5s,J9s-J7s,T8s-T6s,97s-96s,86s,76s-75s,65s-64s,54s,43s,ATo,KJo:Call 99-22,A9s-A6s,A4s-A2s,KTs-K6s,K4s-K2s,QTs-Q6s,Q4s-Q2s,J6s-J2s,T5s-T2s,95s-92s,85s-82s,74s-72s,63s-62s,53s-52s,42s,32s,A9o-A2o,KTo-K2o,QJo-Q5o,JTo-J6o,T9o-T6o,98o-96o,87o-86o,76o-75o,65o-64o,54o,43o
+BB Vs BTN Raise:3-Bet AA-TT,AKs-ATs,KQs-KJs,QJs,JTs,T9s,98s,87s,AKo-AJo,KQo:3-Bet-Fold A5s,K5s,Q5s,J9s-J7s,T8s-T6s,97s-96s,86s,76s-75s,65s-64s,54s,43s,ATo,KJo:Call 99-22,A9s-A6s,A4s-A2s,KTs-K6s,K4s-K2s,QTs-Q6s,Q4s-Q2s,J6s-J2s,T5s-T2s,95s-92s,85s-82s,74s-72s,63s-62s,53s-52s,42s,32s,A9o-A2o,KTo-K2o,QJo-Q5o,JTo-J6o,T9o-T6o,98o-96o,87o-86o,76o-75o,65o-64o,54o,43o
+BB Vs SB Raise:3-Bet AA-99,AKs-ATs,A5s,KQs-KTs,QJs,T9s,98s,87s,AKo-AJo:3-Bet-Fold A4s-A3s,K4s-K3s,T7s-T6s,97s-95s,86s-85s,75s-74s,64s,54s,43s:Call 88-22,A9s-A6s,A2s,K9s-K5s,K2s,QTs-Q2s,JTs-J2s,T8s,T5s-T2s,94s-92s,84s-82s,76s,73s-72s,65s,63s-62s,53s-52s,42s,32s,ATo-A2o,KQo-K2o,QJo-Q5o,JTo-J6o,T9o-T6o,98o-96o,87o-86o,76o,65o,54o-53o,43o-42o,32o
+SB Vs UTG Raise:3-Bet AA-99,AKs-AQs,KJs,AKo:3-Bet-Fold AJs-ATs,A5s-A4s,KQs,KQo:Call 88-22,A9s-A6s,A3s-A2s,KTs-K7s,QJs-Q9s,JTs-J9s,T9s-T8s,98s,87s,76s,65s,54s,AQo-AJo
+SB Vs MP Raise:3-Bet AA-99,AKs-AQs,KJs,AKo:3-Bet-Fold AJs-ATs,A5s-A4s,KQs,KQo:Call 88-22,A9s-A6s,A3s-A2s,KTs-K7s,QJs-Q9s,JTs-J9s,T9s-T8s,98s,87s,76s,65s,54s,AQo-AJo
+SB Vs CO Raise:3-Bet AA-88,AKs-ATs,KQs-KTs,QJs,AKo-AQo:3-Bet-Fold A9s,A6s-A4s,K9s-K8s,QTs-Q9s,JTs-J9s,T9s,87s,76s,AJo-ATo,KQo-KJo,QJo:Call 77-22,A8s-A7s,A3s-A2s,K7s-K5s,Q8s,J8s,T8s,98s-97s,65s,54s,KTo,QTo
+SB Vs BTN Raise:3-Bet AA-88,AKs-ATs,KQs-KTs,QJs,AKo-AQo:3-Bet-Fold A9s,A6s-A4s,K9s-K8s,QTs-Q9s,JTs-J9s,T9s,87s,76s,AJo-ATo,KQo-KJo,QJo:Call 77-22,A8s-A7s,A3s-A2s,K7s-K5s,Q8s,J8s,T8s,98s-97s,65s,54s,KTo,QTo
+BTN Vs UTG Raise:3-Bet AA-99,AKs,AKo:3-Bet-Fold ATs-A9s,A5s-A4s,KJs-K9s,QJs,87s,76s,AJo-ATo,KQo:Call 88-22,AQs-AJs,A8s-A6s,KQs,K8s-K5s,QTs-Q8s,JTs-J8s,T9s-T8s,98s-97s,86s,75s,65s-64s,54s,AQo
+BTN Vs MP Raise:3-Bet AA-99,AKs,AKo:3-Bet-Fold ATs-A9s,A5s-A4s,KJs-K9s,QJs,87s,76s,AJo-ATo,KQo:Call 88-22,AQs-AJs,A8s-A6s,KQs,K8s-K5s,QTs-Q8s,JTs-J8s,T9s-T8s,98s-97s,86s,75s,65s-64s,54s,AQo
+BTN Vs CO Raise:3-Bet AA-99,AKs-ATs,KQs-KTs,QJs,AKo-AQo:3-Bet-Fold A9s-A5s,87s,76s,AJo-A9o:Call 88-22,A4s-A2s,K9s-K5s,QTs-Q8s,JTs-J8s,T9s-T8s,98s,KQo-KTo,QJo-QTo,JTo
+CO Vs UTG Raise:3-Bet AA-99,AKs,AKo:3-Bet-Fold ATs,A8s,A5s-A4s,KJs-K9s,QTs,AQo,KQo:Call 88-22,AQs-AJs,A9s,A7s-A6s,A3s-A2s,KQs,QJs,JTs-J9s,T9s,98s,87s,76s,65s,54s
+CO Vs MP Raise:3-Bet AA-99,AKs,AKo:3-Bet-Fold ATs,A8s,A5s-A4s,KJs-K9s,QTs,AQo,KQo:Call 88-22,AQs-AJs,A9s,A7s-A6s,A3s-A2s,KQs,QJs,JTs-J9s,T9s,98s,87s,76s,65s,54s
+MP Vs UTG Raise:3-Bet AA-JJ,AKs,AKo:3-Bet-Fold A9s,A5s,KJs-KTs,QJs,AQo:Call TT-55,AQs-ATs,KQs,QTs,JTs
+SB Vs BB 3Bet:4-Bet AA-77,AKs-A5s,KQs-K9s,QJs-Q9s,JTs-J9s,T9s,76s,65s,AKo-AJo,KQo:4-Bet-Fold T4s-T3s,95s-93s,85s-83s,K8o-K5o,Q8o,J8o,T8o:Call 66-22,A4s-A2s,K8s-K2s,Q8s-Q7s,J8s-J7s,T8s-T7s,98s-97s,87s-86s,75s,64s,54s-53s,43s-42s,32s,ATo-A2o,KJo-K9o,QJo
+BTN Vs BB 3Bet:4-Bet AA-TT,AKs,AKo:4-Bet-Fold A8s,K8s,ATo-A8o:Call 99-22,AQs-A9s,A7s-A2s,KQs-K9s,K7s-K2s,QJs-Q8s,JTs-J8s,T9s-T8s,98s-97s,87s-86s,76s,65s,54s,AQo-AJo,KQo-KTo,QJo
+BTN Vs SB 3Bet:4-Bet AA-TT,AKs,AKo:4-Bet-Fold A8s,K8s,ATo-A8o:Call 99-22,AQs-A9s,A7s-A2s,KQs-K9s,K7s-K2s,QJs-Q8s,JTs-J8s,T9s-T8s,98s-97s,87s-86s,76s,65s,54s,AQo-AJo,KQo-KTo,QJo
+CO Vs BB 3Bet:4-Bet AA-JJ,AKs,AKo:4-Bet-Fold A2s,K9s-K8s,AJo-ATo,KQo:Call TT-22,AQs-A3s,KQs-KTs,K7s-K5s,QJs-Q8s,JTs-J8s,T9s-T8s,98s,87s,76s,65s,54s,AQo,KJo
+CO Vs SB 3Bet:4-Bet AA-JJ,AKs,AKo:4-Bet-Fold A2s,K9s-K8s,AJo-ATo,KQo:Call TT-22,AQs-A3s,KQs-KTs,K7s-K5s,QJs-Q8s,JTs-J8s,T9s-T8s,98s,87s,76s,65s,54s,AQo,KJo
+CO Vs BTN 3Bet:4-Bet AA-JJ,AKs,AKo:4-Bet-Fold A2s,K9s-K8s,AJo-ATo,KQo:Call TT-22,AQs-A3s,KQs-KTs,K7s-K5s,QJs-Q8s,JTs-J8s,T9s-T8s,98s,87s,76s,65s,54s,AQo,KJo
+MP Vs BB 3Bet:4-Bet AA-JJ,AKs,AKo:4-Bet-Fold A7s-A2s,K9s-K8s,AJo,KQo:Call TT-22,AQs-A8s,KQs-KTs,QJs-Q9s,JTs-J9s,T9s,98s,87s,76s,65s,54s,AQo
+MP Vs SB 3Bet:4-Bet AA-JJ,AKs,AKo:4-Bet-Fold A7s-A2s,K9s-K8s,AJo,KQo:Call TT-22,AQs-A8s,KQs-KTs,QJs-Q9s,JTs-J9s,T9s,98s,87s,76s,65s,54s,AQo
+MP Vs BTN 3Bet:4-Bet AA-JJ,AKs,AKo:4-Bet-Fold A7s-A2s,K9s-K8s,AJo,KQo:Call TT-22,AQs-A8s,KQs-KTs,QJs-Q9s,JTs-J9s,T9s,98s,87s,76s,65s,54s,AQo
+MP Vs CO 3Bet:4-Bet AA-JJ,AKs,AKo:4-Bet-Fold A7s-A2s,K9s-K8s,AJo,KQo:Call TT-22,AQs-A8s,KQs-KTs,QJs-Q9s,JTs-J9s,T9s,98s,87s,76s,65s,54s,AQo
+UTG Vs BB 3Bet:4-Bet AA-QQ,AKs,AKo:4-Bet-Fold A8s-A2s,K9s:Call JJ-22,AQs-A9s,KQs-KTs,QJs-QTs,JTs,T9s,98s,87s,76s,AQo
+UTG Vs SB 3Bet:4-Bet AA-QQ,AKs,AKo:4-Bet-Fold A8s-A2s,K9s:Call JJ-22,AQs-A9s,KQs-KTs,QJs-QTs,JTs,T9s,98s,87s,76s,AQo
+UTG Vs BTN 3Bet:4-Bet AA-QQ,AKs,AKo:4-Bet-Fold A8s-A2s,K9s:Call JJ-22,AQs-A9s,KQs-KTs,QJs-QTs,JTs,T9s,98s,87s,76s,AQo
+UTG Vs CO 3Bet:4-Bet AA-QQ,AKs,AKo:4-Bet-Fold A8s-A2s,K9s:Call JJ-22,AQs-A9s,KQs-KTs,QJs-QTs,JTs,T9s,98s,87s,76s,AQo
+UTG Vs MP 3Bet:4-Bet AA-QQ,AKs,AKo:4-Bet-Fold A8s-A2s,K9s:Call JJ-22,AQs-A9s,KQs-KTs,QJs-QTs,JTs,T9s,98s,87s,76s,AQo
