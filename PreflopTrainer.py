@@ -3,10 +3,9 @@ import random
 import threading
 import time
 # TODO: Make an opening animation
-# TODO: Clean up the fucking code
+# TODO: Clean up the fucking code and add comments
 # TODO: Make the program do something when the answer is correct
-# TODO: Play with the background color
-# TODO: Make sure these are the correct ranges before you full send
+# TODO: Add quickdraw buttons for common percentages!
 
 
 class ComboButton(wx.Button):
@@ -86,6 +85,7 @@ class MyPanel(wx.Panel):
                 button.Bind(wx.EVT_BUTTON, self.on_button)
                 button.Bind(wx.EVT_KEY_DOWN, self.onKeyDown)
                 button.Bind(wx.EVT_KEY_UP, self.onKeyUp)
+                
                 self.startingColor(button)
                 self.range_sizer.Add(button)
 
@@ -160,6 +160,18 @@ class MyPanel(wx.Panel):
         self.options_sizer.Add(self.clear, proportion=1,
                         flag = wx.ALL | wx.CENTER | wx.EXPAND,
                         border=5)
+        self.pockets = ComboButton(self, label="Pockets")
+        #self.pockets.SetBackgroundColour(self.clear_color)
+        self.pockets.Bind(wx.EVT_BUTTON, self.on_pockets)
+        self.options_sizer.Add(self.pockets, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
+        self.suited = ComboButton(self, label="Suited")
+        #self.pockets.SetBackgroundColour(self.clear_color)
+        self.suited.Bind(wx.EVT_BUTTON, self.on_suited)
+        self.options_sizer.Add(self.suited, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
 
         self.main_sizer.Add(self.options_sizer)
 
@@ -222,11 +234,11 @@ class MyPanel(wx.Panel):
         return shift_range
 
 
-    def on_button(self, event): #TODO: Adjust this for new ranges
+    def on_button(self, event):
         button = self.getButton(event.Id)
         #print(button.GetLabel())
         if self.shift_down: #If the shift key was pressed in conjunction with the button
-            #print("SHIFT DOWN") #TODO: This is still buggy but passable for now
+            #print("SHIFT DOWN")
             shift_range = self.calculateShiftRange(button) #This should be a list of cells to highlight
             #print(shift_range)
             for row in self.squares:
@@ -236,7 +248,7 @@ class MyPanel(wx.Panel):
             self.last_button_pressed = button.GetLabel()
             #print("Last button pressed: ", self.last_button_pressed)
             return #TODO: wrong place for this but make the mode switch back correctly to preflop
-                            #TODO: Clean up this code
+
         if button.clicked == True:
             self.startingColor(button) #THis makes the botton's color go away
             button.clicked = False
@@ -297,7 +309,46 @@ class MyPanel(wx.Panel):
     def on_clear(self, event):
         self.clearBoard()
 
-    def colorButton(self, button): #TODO: Apply this to other places
+    def on_pockets(self, event):
+        """
+        Fills in all pocket pairs on the grid
+        """
+        pockets = ["AA", "KK", "QQ", "JJ", "TT", "99", "88", "77", "66", "55", "44", "33", "22"]
+        if self.pockets.clicked == False: #Fill all pockets
+            for row in self.squares:
+                for button in row:
+                    if button.GetLabel() in pockets:
+                        self.colorButton(button)
+            self.pockets.clicked = True
+        else: #Unfill all pockets
+            for row in self.squares:
+                for button in row:
+                    if button.GetLabel() in pockets:
+                        self.startingColor(button) #THis makes the botton's color go away
+                        button.clicked = False
+                        button.status = -1
+            self.pockets.clicked = False
+
+    def on_suited(self, event):
+        """
+        Fills in all suited hands on the grid
+        """
+        if self.suited.clicked == False: #Fill all suited
+            for row in self.squares:
+                for button in row:
+                    if 's' in button.GetLabel():
+                        self.colorButton(button)
+            self.suited.clicked = True
+        else: #Unfill all pockets
+            for row in self.squares:
+                for button in row:
+                    if 's' in button.GetLabel():
+                        self.startingColor(button) #THis makes the botton's color go away
+                        button.clicked = False
+                        button.status = -1
+            self.suited.clicked = False
+
+    def colorButton(self, button):
         """
         This function takes a button that is to be colored and colors it according
         to the mode that the program is currently in
@@ -341,7 +392,7 @@ class MyPanel(wx.Panel):
                     button.status = -1
             row_button.clicked = False
 
-    def fill_col(self, event):#TODO: Adjust everything below this point for new 3bet+ options
+    def fill_col(self, event):
         col_index, col_button = self.getCol(event.Id)
         if col_button.clicked == False: #Fill the whole row
             for button in [self.squares[i][col_index] for i in range(13)]:
@@ -394,7 +445,6 @@ class MyPanel(wx.Panel):
         #print(self.solutions)
 
 
-#TODO: Adjust everything below this point for new 3bet+ options
     def getBoardStatus(self):
         """
         This gets the current pressed buttons using a dictionary
@@ -453,7 +503,7 @@ class MyPanel(wx.Panel):
             self.visid_label = self.starting_hands_list[random.randint(0,168)]
             self.question_text.SetLabel(self.visid_label)
             return
-            #TODO: Add VISID functionality and remember to return at the end so the preflop code doesn't also run
+
 
         self.user_soln = self.getBoardStatus() #Dictionary containing what the user has entered so far
         #print("User")
@@ -470,7 +520,7 @@ class MyPanel(wx.Panel):
                 if self.current_question >= len(self.questions):
                     self.current_question = 0
             self.question_text.SetLabel(self.questions[self.current_question])
-            self.clearBoard() #TODO: FIX EVERYTHING BELOW THIS
+            self.clearBoard()
         else: #Have it show temporarily the incorrect squares
             self.updateIncorrectSquares()
 
