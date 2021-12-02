@@ -6,6 +6,9 @@ import time
 # TODO: Clean up the fucking code and add comments
 # TODO: Make the program do something when the answer is correct
 # TODO: Add quickdraw buttons for common percentages!
+# TODO: Add functionality to drag across multiple buttons
+# TODO: Add a mode where you can just look at the ranges
+
 
 
 class ComboButton(wx.Button):
@@ -23,7 +26,7 @@ class MyPanel(wx.Panel):
         super().__init__(parent)
         self.PREFLOP = 701
         self.VISID = 702
-        self.LEARN = 703
+        self.PREFLOP_ORDERED = 703
         self.starting_hands = [['AA', 'AKs', 'AQs', 'AJs', 'ATs', 'A9s', 'A8s', 'A7s', 'A6s', 'A5s', 'A4s', 'A3s', 'A2s'],
                                 ['AKo','KK', 'KQs', 'KJs', 'KTs', 'K9s', 'K8s', 'K7s', 'K6s', 'K5s', 'K4s',  'K3s', 'K2s'],
                                 ['AQo', 'KQo', 'QQ', 'QJs', 'QTs', 'Q9s', 'Q8s', 'Q7s', 'Q6s', 'Q5s', 'Q4s', 'Q3s', 'Q2s'],
@@ -85,7 +88,7 @@ class MyPanel(wx.Panel):
                 button.Bind(wx.EVT_BUTTON, self.on_button)
                 button.Bind(wx.EVT_KEY_DOWN, self.onKeyDown)
                 button.Bind(wx.EVT_KEY_UP, self.onKeyUp)
-                
+
                 self.startingColor(button)
                 self.range_sizer.Add(button)
 
@@ -172,6 +175,14 @@ class MyPanel(wx.Panel):
         self.options_sizer.Add(self.suited, proportion=1,
                         flag = wx.ALL | wx.CENTER | wx.EXPAND,
                         border=5)
+
+        self.show_soln = ComboButton(self, label="Solution")
+        #self.pockets.SetBackgroundColour(self.clear_color)
+        self.show_soln.Bind(wx.EVT_BUTTON, self.on_show_soln)
+        self.options_sizer.Add(self.show_soln, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
+
 
         self.main_sizer.Add(self.options_sizer)
 
@@ -348,6 +359,37 @@ class MyPanel(wx.Panel):
                         button.status = -1
             self.suited.clicked = False
 
+    def on_show_soln(self, event):
+        """
+        This function displays the solution to the current problem
+        """
+        colors = [self.raise_color, self.call_color, self.three_bet_color, self.three_bet_fold_color, self.four_bet_color, self.four_bet_fold_color]
+        categories = ["Raise", "Call", "3-Bet", "3-Bet-Fold", "4-Bet", "4-Bet-Fold"]
+        self.real_soln = self.solutions[self.questions[self.current_question]]
+
+
+        if self.training_mode != self.VISID:
+            if self.show_soln.clicked == False: #Solution is not currently shown
+                self.user_soln = self.getBoardStatus() #Save this so you can return to it
+                self.clearBoard()
+                for row in self.squares:
+                    for button in row:
+                        for key in self.real_soln.keys():
+                            for item in self.real_soln[key]:
+                                if button.GetLabel() == item:
+                                    button.SetBackgroundColour(colors[categories.index(key)])
+                self.show_soln.clicked = True
+            elif self.show_soln.clicked == True:
+                self.clearBoard()
+                for row in self.squares:
+                    for button in row:
+                        for key in self.user_soln.keys():
+                            for item in self.user_soln[key]:
+                                if button.GetLabel() == item:
+                                    button.SetBackgroundColour(colors[categories.index(key)])
+                self.show_soln.clicked = False
+
+
     def colorButton(self, button):
         """
         This function takes a button that is to be colored and colors it according
@@ -515,7 +557,7 @@ class MyPanel(wx.Panel):
             #print("CORRECT")
             if self.training_mode == self.PREFLOP:
                 self.current_question = random.randint(0,len(self.questions)-1)
-            elif self.training_mode == self.LEARN:
+            elif self.training_mode == self.PREFLOP_ORDERED:
                 self.current_question += 1
                 if self.current_question >= len(self.questions):
                     self.current_question = 0
@@ -581,7 +623,7 @@ class MyFrame(wx.Frame):
 
         self.PREFLOP = 701
         self.VISID = 702
-        self.LEARN = 703
+        self.PREFLOP_ORDERED = 703
         self.panel = MyPanel(self)
 
         menuBar = wx.MenuBar()
@@ -591,8 +633,8 @@ class MyFrame(wx.Frame):
         modeMenu.Append(preflop)
         visID = wx.MenuItem(modeMenu, self.VISID, text="Vis ID", kind=wx.ITEM_NORMAL)
         modeMenu.Append(visID)
-        learn = wx.MenuItem(modeMenu, self.LEARN, text="Learn", kind=wx.ITEM_NORMAL)
-        modeMenu.Append(learn)
+        preflopOrdered = wx.MenuItem(modeMenu, self.PREFLOP_ORDERED, text="Preflop Ordered", kind=wx.ITEM_NORMAL)
+        modeMenu.Append(preflopOrdered)
 
         menuBar.Append(modeMenu, "Mode")
         self.SetMenuBar(menuBar)
@@ -605,8 +647,8 @@ class MyFrame(wx.Frame):
             self.panel.training_mode = self.PREFLOP
         elif id == self.VISID:
             self.panel.training_mode = self.VISID
-        elif id == self.LEARN:
-            self.panel.training_mode = self.LEARN
+        elif id == self.PREFLOP_ORDERED:
+            self.panel.training_mode = self.PREFLOP_ORDERED
 
 
 if __name__ == "__main__":
