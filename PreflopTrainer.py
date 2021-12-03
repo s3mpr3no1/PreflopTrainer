@@ -7,7 +7,7 @@ import time
 # TODO: Make the program do something when the answer is correct
 # TODO: Add quickdraw buttons for common percentages!
 # TODO: Add functionality to drag across multiple buttons
-# TODO: Add a mode where you can just look at the ranges
+
 
 
 
@@ -27,6 +27,7 @@ class MyPanel(wx.Panel):
         self.PREFLOP = 701
         self.VISID = 702
         self.PREFLOP_ORDERED = 703
+        self.BROWSE = 704
         self.starting_hands = [['AA', 'AKs', 'AQs', 'AJs', 'ATs', 'A9s', 'A8s', 'A7s', 'A6s', 'A5s', 'A4s', 'A3s', 'A2s'],
                                 ['AKo','KK', 'KQs', 'KJs', 'KTs', 'K9s', 'K8s', 'K7s', 'K6s', 'K5s', 'K4s',  'K3s', 'K2s'],
                                 ['AQo', 'KQo', 'QQ', 'QJs', 'QTs', 'Q9s', 'Q8s', 'Q7s', 'Q6s', 'Q5s', 'Q4s', 'Q3s', 'Q2s'],
@@ -81,6 +82,8 @@ class MyPanel(wx.Panel):
         self.range_sizer = wx.GridSizer(rows=13, cols=13, hgap=0, vgap=0)
         self.training_mode = parent.PREFLOP
 
+        #Initialize an array of buttons that each represent a different hand
+        #ComboButtons have extra attributes like "clicked" to help maintain state
         self.squares = []
         for row in range(13):
             self.squares.append([ComboButton(self, label=self.starting_hands[row][i], size=(50,50)) for i in range(13)])
@@ -88,10 +91,10 @@ class MyPanel(wx.Panel):
                 button.Bind(wx.EVT_BUTTON, self.on_button)
                 button.Bind(wx.EVT_KEY_DOWN, self.onKeyDown)
                 button.Bind(wx.EVT_KEY_UP, self.onKeyUp)
-
                 self.startingColor(button)
                 self.range_sizer.Add(button)
 
+        #These buttons fill the entire row that they sit on
         self.row_fillers_sizer = wx.GridSizer(rows=14, cols=1, hgap=0, vgap=0)
         self.row_fillers = [ComboButton(self, label="<", size=(50,50)) for i in range(13)]
         for button in self.row_fillers:
@@ -102,7 +105,7 @@ class MyPanel(wx.Panel):
         self.row_fillers_sizer.Add(self.enterButton)
 
         self.range_and_cols.Add(self.range_sizer)
-
+        #These buttons fill the entire columns that they sit below
         self.col_fillers_sizer = wx.GridSizer(rows=1, cols=13, hgap=0, vgap=0)
         self.col_fillers = [ComboButton(self, label="^", size=(50,50)) for i in range(13)]
         for button in self.col_fillers:
@@ -182,11 +185,46 @@ class MyPanel(wx.Panel):
         self.options_sizer.Add(self.show_soln, proportion=1,
                         flag = wx.ALL | wx.CENTER | wx.EXPAND,
                         border=5)
-
-
+        self.right_arrow = wx.Button(self, label="-->")
+        self.right_arrow.Bind(wx.EVT_BUTTON, self.on_right_arrow)
+        self.options_sizer.Add(self.right_arrow, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
+        self.left_arrow = wx.Button(self, label="<--")
+        self.left_arrow.Bind(wx.EVT_BUTTON, self.on_left_arrow)
+        self.options_sizer.Add(self.left_arrow, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
+        """
+        self.preset_1 = ComboButton(self, label="2.5%")
+        self.preset_1.Bind(wx.EVT_BUTTON, self.on_preset_1)
+        self.options_sizer.Add(self.preset_1, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
+        self.preset_2 = ComboButton(self, label="5%")
+        self.preset_2.Bind(wx.EVT_BUTTON, self.on_preset_2)
+        self.options_sizer.Add(self.preset_2, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
+        self.preset_3 = ComboButton(self, label="10%")
+        self.preset_3.Bind(wx.EVT_BUTTON, self.on_preset_3)
+        self.options_sizer.Add(self.preset_3, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
+        self.preset_4 = ComboButton(self, label="20%")
+        self.preset_4.Bind(wx.EVT_BUTTON, self.on_preset_4)
+        self.options_sizer.Add(self.preset_4, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
+        self.preset_5 = ComboButton(self, label="33%")
+        self.preset_5.Bind(wx.EVT_BUTTON, self.on_preset_5)
+        self.options_sizer.Add(self.preset_5, proportion=1,
+                        flag = wx.ALL | wx.CENTER | wx.EXPAND,
+                        border=5)
+        """
         self.main_sizer.Add(self.options_sizer)
 
-        self.question_text = wx.StaticText(self,-1, self.questions[self.current_question],
+        self.question_text = wx.StaticText(self,-1, self.questions[self.current_question].replace(" ", "\n"),
                                         size=(400, 800),
                                         style=wx.ALIGN_CENTER)
 
@@ -202,29 +240,44 @@ class MyPanel(wx.Panel):
         #print("PREFLOP")
         pass
 
-    def getButton(self, event_id): #Given an event ID, returns the card button associated with it
+    def getButton(self, event_id):
+        """
+        Given an event ID, returns the card button associated with it
+        """
         for row in self.squares:
             for button in row:
                 if button.Id == event_id:
                     return button  #At some point, you may have to return something other than the label
 
-    def getRow(self, event_id): #returns an integer corresponding to the row to color
+    def getRow(self, event_id):
+        """
+        Returns an integer corresponding to the row to color and the button itself
+        """
         for row in range(len(self.row_fillers)):
                 if self.row_fillers[row].Id == event_id:
                     return row, self.row_fillers[row]
 
-    def getCol(self, event_id): #returns an integer corresponding to the row to color
+    def getCol(self, event_id):
+        """
+        Returns an integer corresponding to the col to color and the button itself
+        """
         for col in range(len(self.col_fillers)):
                 if self.col_fillers[col].Id == event_id:
                     return col, self.row_fillers[col]
 
-    def getCoords(self, label): #This function returns the coordinates in the matrix for a given label
+    def getCoords(self, label):
+        """
+        This function returns the coordinates in the matrix for a given label
+        """
         for row_index in range(13):
             for button_index in range(13):
                 if self.squares[row_index][button_index].GetLabel() == label:
                     return (row_index, button_index)
 
-    def calculateShiftRange(self, button): #This function takes a button and the global last_button_pressed and calculates cells in the shift range
+    def calculateShiftRange(self, button):
+        """
+        This function takes a button and the global last_button_pressed and calculates cells in the shift range
+        """
         button_coords = self.getCoords(button.GetLabel())
         last_button_pressed_coords = self.getCoords(self.last_button_pressed)
         #At this point you have two coordinates (x, y) that represent (row, col)
@@ -389,6 +442,75 @@ class MyPanel(wx.Panel):
                                     button.SetBackgroundColour(colors[categories.index(key)])
                 self.show_soln.clicked = False
 
+    def on_left_arrow(self, event): #TODO
+        actions = ["X", "Call", "Raise", "3-Bet", "3-Bet-Fold", "4-Bet", "4-Bet-Fold"]
+        if self.training_mode == self.BROWSE:
+            self.current_question -= 1
+            if self.current_question < 0:
+                self.current_question = len(self.questions) - 1
+            self.question_text.SetLabel(self.questions[self.current_question].replace(" ", "\n"))
+            self.clearBoard()
+            for key in self.solutions[self.questions[self.current_question]].keys(): #Each key is a category like "Raise"
+                self.mode = actions.index(key) #Sets the mode to the right value to use the colorButton() function
+                for label in self.solutions[self.questions[self.current_question]][key]:
+                    for row in self.squares:
+                        for button in row:
+                            if button.GetLabel() == label:
+                                self.colorButton(button)
+        elif self.training_mode == self.PREFLOP_ORDERED:
+            self.current_question -= 1
+            if self.current_question < 0:
+                self.current_question = len(self.questions) - 1
+            self.question_text.SetLabel(self.questions[self.current_question].replace(" ", "\n"))
+            self.clearBoard()
+        elif self.training_mode == self.PREFLOP:
+            self.current_question = random.randint(0, len(self.questions)-1)
+            self.question_text.SetLabel(self.questions[self.current_question].replace(" ", "\n"))
+            self.clearBoard()
+
+    def on_right_arrow(self, event):
+        actions = ["X", "Call", "Raise", "3-Bet", "3-Bet-Fold", "4-Bet", "4-Bet-Fold"]
+        if self.training_mode == self.BROWSE:
+            self.current_question += 1
+            if self.current_question > len(self.questions) -1:
+                self.current_question = 0
+            self.clearBoard()
+            self.question_text.SetLabel(self.questions[self.current_question].replace(" ", "\n"))
+            self.clearBoard()
+            for key in self.solutions[self.questions[self.current_question]].keys(): #Each key is a category like "Raise"
+                self.mode = actions.index(key) #Sets the mode to the right value to use the colorButton() function
+                for label in self.solutions[self.questions[self.current_question]][key]:
+                    for row in self.squares:
+                        for button in row:
+                            if button.GetLabel() == label:
+                                self.colorButton(button)
+        elif self.training_mode == self.PREFLOP_ORDERED:
+            self.current_question += 1
+            if self.current_question > len(self.questions) -1:
+                self.current_question = 0
+            self.question_text.SetLabel(self.questions[self.current_question].replace(" ", "\n"))
+            self.clearBoard()
+        elif self.training_mode == self.PREFLOP:
+            self.current_question = random.randint(0, len(self.questions)-1)
+            self.question_text.SetLabel(self.questions[self.current_question].replace(" ", "\n"))
+            self.clearBoard()
+    """
+    def on_preset_1(self, event):
+        hands = self.rangeConvert("AA-QQ,AKs,AKo")
+
+    def on_preset_2(self, event):
+        hands = self.rangeConvert("AA-TT,AKs-AQs,AKo-AQo")
+
+    def on_preset_3(self, event):
+        hands = self.rangeConvert("")
+
+    def on_preset_4(self, event):
+        hands = self.rangeConvert("")
+
+    def on_preset_5(self, event):
+        hands = self.rangeConvert("")
+    """
+
 
     def colorButton(self, button):
         """
@@ -543,7 +665,7 @@ class MyPanel(wx.Panel):
         if self.training_mode == self.VISID:
             self.on_clear(wx.EVT_BUTTON)
             self.visid_label = self.starting_hands_list[random.randint(0,168)]
-            self.question_text.SetLabel(self.visid_label)
+            self.question_text.SetLabel(self.visid_label.replace(" ", "\n"))
             return
 
 
@@ -561,7 +683,7 @@ class MyPanel(wx.Panel):
                 self.current_question += 1
                 if self.current_question >= len(self.questions):
                     self.current_question = 0
-            self.question_text.SetLabel(self.questions[self.current_question])
+            self.question_text.SetLabel(self.questions[self.current_question].replace(" ", "\n"))
             self.clearBoard()
         else: #Have it show temporarily the incorrect squares
             self.updateIncorrectSquares()
@@ -624,17 +746,20 @@ class MyFrame(wx.Frame):
         self.PREFLOP = 701
         self.VISID = 702
         self.PREFLOP_ORDERED = 703
+        self.BROWSE = 704
         self.panel = MyPanel(self)
 
         menuBar = wx.MenuBar()
 
         modeMenu = wx.Menu()
-        preflop = wx.MenuItem(modeMenu, self.PREFLOP, text="Preflop Ranges", kind=wx.ITEM_NORMAL)
+        preflop = wx.MenuItem(modeMenu, self.PREFLOP, text="Preflop Random", kind=wx.ITEM_NORMAL)
         modeMenu.Append(preflop)
         visID = wx.MenuItem(modeMenu, self.VISID, text="Vis ID", kind=wx.ITEM_NORMAL)
         modeMenu.Append(visID)
         preflopOrdered = wx.MenuItem(modeMenu, self.PREFLOP_ORDERED, text="Preflop Ordered", kind=wx.ITEM_NORMAL)
         modeMenu.Append(preflopOrdered)
+        browse = wx.MenuItem(modeMenu, self.BROWSE, text="Browse", kind=wx.ITEM_NORMAL)
+        modeMenu.Append(browse)
 
         menuBar.Append(modeMenu, "Mode")
         self.SetMenuBar(menuBar)
@@ -649,6 +774,8 @@ class MyFrame(wx.Frame):
             self.panel.training_mode = self.VISID
         elif id == self.PREFLOP_ORDERED:
             self.panel.training_mode = self.PREFLOP_ORDERED
+        elif id == self.BROWSE:
+            self.panel.training_mode = self.BROWSE
 
 
 if __name__ == "__main__":
